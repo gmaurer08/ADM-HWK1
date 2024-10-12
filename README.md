@@ -8,10 +8,10 @@ The datasets used to test the solutions are those provided directly by HackerRan
 
 ## Script descriptions
 
-1. __`scripts.py`__: 
+1. **[`scripts.py`](scripts.py)**: 
 	> This script contains the solutions to the assigned HackerRank exercises.
 
-2. __`stamps.pdf`__: 
+2. **[`stamps.pdf`](stamps.pdf)**: 
 	> This file contains the screenshots of the HackerRank submissions.
 
 ## License
