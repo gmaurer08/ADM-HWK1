@@ -11,16 +11,15 @@ import sys
 
 if __name__ == '__main__':
     n = int(input().strip())
-    
     if n%2 == 1:
-        print('Weird')
+        print('Weird') # Print 'Weird' if n is odd
     else:
-        if n in range(2,6):
-            print('Not Weird')
-        elif n in range(6,21):
-            print('Weird')
-        elif n>20:
-            print('Not Weird')
+        if n in range(2,6): # if 2 <= n <= 5
+            print('Not Weird') # print 'Not Weird'
+        elif n in range(6,21): # if 6 <= n <= 20
+            print('Weird') # print 'Weird'
+        elif n>20: # if n is larger than 20
+            print('Not Weird') # print 'Not Weird'
 
 # Arithmetic Operators
 if __name__ == '__main__':
@@ -47,12 +46,12 @@ if __name__ == '__main__':
 def is_leap(year):
     leap = False
     
-    if year % 4 == 0:
-        leap = True
-        if year % 100 == 0:
-            leap = False
-            if year % 400 == 0:
-                leap = True
+    if year % 4 == 0: # if divisible by 4
+        leap = True # it's a leap year
+        if year % 100 == 0: # unless it's divisible by 100
+            leap = False # then it's not a leap year
+            if year % 400 == 0: # except when it's divisible by 400
+                leap = True # in that case it is a leap year
     
     return leap
 
@@ -75,30 +74,34 @@ if __name__ == '__main__':
 if __name__ == '__main__':
     n = int(input())
     arr = map(int, input().split())
-    scores = list(arr)
-    winner = max(scores)
-    while winner in scores:
-        scores.remove(winner) # remove all winning scores
+    scores = list(arr) # initialize list of scores
+    winner = max(scores) # maximum score
+    while winner in scores: # eliminate all max scores from the list
+        scores.remove(winner)
     runner_up = max(scores) # the next highest score is the runner up
     print(runner_up)
 
 # Nested Lists
 if __name__ == '__main__':
-    records =[]
+    records =[] # initialize list of records
+    
+    # Read student names and scores
     for _ in range(int(input())):
         name = input()
         score = float(input())
-        records.append([str(name),score])
+        records.append([name,score])
         
     scores = [records[i][1] for i in range(len(records))] # list of student scores
     min_score = min(scores) # min score
     
+    # remove all the minimum scores
     while min_score in scores: 
-        scores.remove(min_score) # remove the min scores
+        scores.remove(min_score)
             
     second_to_last = min(scores) # second to last score is the new min score
     second_to_last_students = [] # initialize list of second to last students
         
+    # fill list of second to last students
     for k, student in enumerate(records):
         if records[k][1] == second_to_last: # see if student is second to last
             second_to_last_students.append(records[k][0]) # add this student
@@ -116,7 +119,7 @@ if __name__ == '__main__':
         student_marks[name] = scores
     query_name = input()
     
-    avg_grades = sum(student_marks[query_name])/len(student_marks[query_name])
+    avg_grades = sum(student_marks[query_name])/len(student_marks[query_name]) # avg grade of the query student
     formatted_avg = "{:.2f}".format(avg_grades) # format the avg to have 2 places after decimal
     print(formatted_avg)
     
@@ -126,7 +129,8 @@ if __name__ == '__main__':
     N = int(input())
     arr = []
     for _ in range(N):
-        command = input().split()
+        command = input().split() # read the command
+        # execute the command specified by the input
         if str(command[0]) == 'insert':
             arr.insert(int(command[1]),int(command[2]))
         if str(command[0]) == 'print':
@@ -146,20 +150,15 @@ if __name__ == '__main__':
 if __name__ == '__main__':
     n = int(input())
     integer_list = map(int, input().split())
-    t = tuple(integer_list)
-    print(hash(t))
+    t = tuple(integer_list) # turn integer list into a tuple
+    print(hash(t)) # print the result of hash(t)
 
 # sWAP cASE
 def swap_case(s):
     s = s.swapcase()
     return s
-if __name__ == '__main__':
-    s = input()
-    result = swap_case(s)
-    print(result)
 
 # String Split and Join
-
 def split_and_join(line):
     # write your code here
     line = line.split(' ') # Split the line on a " " space
@@ -167,16 +166,7 @@ def split_and_join(line):
     return line
 
 # What's Your Name?
-#
-# Complete the 'print_full_name' function below.
-#
-# The function is expected to return a STRING.
-# The function accepts following parameters:
-#  1. STRING first
-#  2. STRING last
-#
 def print_full_name(first, last):
-    # Write your code here
     s = 'Hello {0} {1}! You just delved into python.'.format(first,last)
     print(s)
 
@@ -198,6 +188,7 @@ def count_substring(string, sub_string):
 # String Validators
 if __name__ == '__main__':
     s = input()
+    # initialize boolean list that will be True at position i if the associated requirement is satisfied
     specific_char_exists = [False,False,False,False,False]
     for char in s:
         if char.isalnum() and specific_char_exists[0]==False:
@@ -243,7 +234,6 @@ def wrap(string, max_width):
     return new_string
 
 # Designer Door Mat
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 N, M = map(int, input().split())
 K = (N-1)//2
 
@@ -266,36 +256,44 @@ print(('.|.').center(M,'-'))
 
 # String Formatting
 def print_formatted(number):
-    # your code goes here
-    width = len(str(bin(number)[2:])) # length of the binary number
+    # get length of the binary number for formatting purposes
+    width = len(str(bin(number)[2:]))
+    
+    # print each number from 1 to number in bases 10, 8, 16, 2
     for i in range(1,number+1):
-        octal = str(oct(i))[2:] # remove the '0o'
-        hexadecimal = str(hex(i)).upper()[2:] # remove the '0x'
-        binary = str(bin(i))[2:] # remove the '0b'
+        octal = str(oct(i))[2:] # remove the '0o' of octal numbers
+        hexadecimal = str(hex(i)).upper()[2:] # remove the '0x' of hexadecimal numbers
+        binary = str(bin(i))[2:] # remove the '0b' of binary numbers
         print('{0:{4}} {1:>{4}} {2:>{4}} {3:>{4}}'.format(i,octal,hexadecimal,binary,width))
 
 # Alphabet Rangoli
 import string
 def print_rangoli(size):
-    letters = string.ascii_lowercase[0:size]
+    # get all the lowercase letters that will be in the Rangoli
+    letters = string.ascii_lowercase[0:size] 
+    
+    # calculate width of the Rangoli
     width = 4 * size - 3
-    extremes = '{0:-^{1}}'.format(letters[-1],width) # top and bottom rows
-    upper_half = extremes +'\n' # 'initialize' upper half string
-    lower_half = extremes # 'initialize' lower half string
+    
+    # build the upper half of the Rangoli
+    extremities = '{0:-^{1}}'.format(letters[-1],width) # top and bottom rows
+    upper_half = extremities +'\n' # 'initialize' upper half string
+    lower_half = extremities # 'initialize' lower half string
     for row in range(1,len(letters)):
         row_letters = letters[-row-1:][::-1] + letters[-row:] # letters in this row
-        spaced_row = '-'.join(list(row_letters)) # rejoin the letters with '-'
+        spaced_row = '-'.join(list(row_letters)) # connect the letters with '-' hyphens
         formatted_row = '{0:-^{1}}'.format(spaced_row,width) # format the row
         upper_half = upper_half + formatted_row + '\n' # add the new row to the upper half
     
-    lower_half = upper_half[-width-3::-1] # create the lower half
-    rangoli = upper_half + lower_half # unify both halves
+    # build the lower half ot the Rangoli
+    lower_half = upper_half[-width-3::-1]
+    
+    # unify both halves
+    rangoli = upper_half + lower_half
     print(rangoli)
     
 
 # Capitalize!
-
-# Complete the solve function below.
 def solve(s):
     capitalized = [word.capitalize() for word in s.split(' ')]
     return ' '.join(capitalized)
@@ -307,9 +305,11 @@ def minion_game(string):
     
     for pos, letter in enumerate(string):
         if letter in 'AEIOU': # if the letter is a vowel
-            kevin_points += len(string[pos:]) # add a point for every following substring 
+            kevin_points += len(string[pos:]) # give Kevin a point for every following substring 
         if letter not in 'AEIOU': # if letter is not a vowel
-            stuart_points += len(string[pos:]) # add a point for every following substring
+            stuart_points += len(string[pos:]) # give Stuart a point for every following substring
+            
+    # print the winner and his points, or print 'Draw'
     if stuart_points > kevin_points:
         print(f'Stuart {stuart_points}')
     if kevin_points > stuart_points:
@@ -337,18 +337,17 @@ def average(array):
     return '{0:.3f}'.format(sum(plants)/len(plants))
 
 # Symmetric Difference
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 # Read Input
 M = input()
 set1 = set(map(int,input().split()))
 N = input()
 set2 = set(map(int,input().split()))
+
 symm_diff = set1.difference(set2).union(set2.difference(set1)) # Create symmetric diff set
 for el in sorted(list(symm_diff)):
     print(el)
 
 # No Idea!
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 # Store the input
 n, m = map(int,input().split())
 array = map(int,input().split())
