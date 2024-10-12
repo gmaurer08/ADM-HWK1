@@ -362,7 +362,6 @@ for i in array:
 print(happiness)
 
 # Set .add()
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 N = int(input())
 distinct_stamps = set() # initialize the set of distinct country stamps
 for _ in range(N):
@@ -372,7 +371,7 @@ for _ in range(N):
 print(len(distinct_stamps))
 
 # Set .discard(), .remove() & .pop()
-# Enter your code here. Read input from STDIN. Print output to STDOUT
+
 # read input
 n = int(input())
 s = set(map(int, input().split()))
@@ -391,7 +390,6 @@ for _ in range(N):
 print(sum(s))
 
 # Set .union() Operation
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 # Read input
 n = int(input())
 english = set(map(int,input().split()))
@@ -401,7 +399,6 @@ total = english.union(french) # students subscribed to French or English newspap
 print(len(total))
 
 # Set .intersection() Operation
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 # Read input
 n = int(input())
 english = set(map(int,input().split()))
@@ -419,7 +416,6 @@ french = set(map(int,input().split()))
 print(len(english.difference(french))) # print set diff between english and french set
 
 # Set .symmetric_difference() Operation
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 n = int(input())
 english = set(map(int,input().split()))
 b = int(input())
@@ -427,7 +423,6 @@ french = set(map(int,input().split()))
 print(len(english.symmetric_difference(french))) # print symm diff set length
 
 # Set Mutations
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 # Read input
 numA = int(input())
 A = set(map(int,input().split()))
@@ -446,7 +441,6 @@ for _ in range(N):
 print(sum(A)) # print sum of A's final elements
 
 # The Captain's Room
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 K = int(input())
 room_list = map(int,input().split())
 seen_once = set() # initialize set of room numbers seen once
@@ -460,7 +454,6 @@ captain = seen_once.difference(seen_twice) # remove from seen_once all the numbe
 print(captain.pop()) # print the only element in the set captain
 
 # Check Subset
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 T = int(input())
 for _ in range(T):
     numA = int(input())
@@ -474,7 +467,6 @@ for _ in range(T):
         print(False)
 
 # Check Strict Superset
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 # Read input
 A = set(map(int,input().split()))
 N = int(input())
@@ -488,7 +480,6 @@ for _ in range(N):
 print(is_superset)
 
 # collections.Counter()
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 from collections import Counter
 X = int(input()) # number of shoes
 shoe_sizes = map(int,input().split()) # list of all shoe sizes
@@ -505,23 +496,25 @@ for _ in range(N):
 print(earned)
 
 # DefaultDict Tutorial
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 from collections import defaultdict
 n, m = list(map(int,input().split()))
 words = defaultdict(list) # initialize defaultdict to store words
+
+# fill group A
 for _ in range(n):
     words['A'].append(input()) # add input word to group A
+    
+# fill group B and check if the words are in A
 for i in range(m):
     new_word = input()
     words['B'].append(new_word) # add this new word to group B
-    indeces = [i+1 for i,word in enumerate(words['A']) if word==new_word]
+    indeces = [i+1 for i,word in enumerate(words['A']) if word==new_word] # occurrences of new_word in A
     if indeces: # if the new word in B appears in A
         print(' '.join((map(str,indeces)))) # print the indeces next to each other
     else: # otherwise print -1
         print(-1)
 
 # Collections.namedtuple()
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 from collections import namedtuple
 N = int(input())
 Student = namedtuple('Student',input().split()) # create namedtuple class for students
@@ -533,7 +526,6 @@ avg_marks = sum(marks)/len(marks) # calculate avg grade
 print(avg_marks)
 
 # Collections.OrderedDict()
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 from collections import OrderedDict
 N = int(input())
 items_bought = OrderedDict() # create ordered dictionary to store items in order
@@ -544,11 +536,12 @@ for i in range(N):
         items_bought[item_name] = int(new_item[-1]) # add item and its price
     else: 
         items_bought[item_name] += int(new_item[-1]) # add price to existing item
+        
+# print item name and net price
 for item in items_bought.items():
     print(item[0],item[1])
 
 # Word Order
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 from collections import OrderedDict
 n = int(input()) # number of words
 words = OrderedDict() # initialize ordered dictionary of words
@@ -564,7 +557,6 @@ for word_count in words.values():
    
 
 # Collections.deque()
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 from collections import deque
 N = int(input())
 d = deque() # create deque object
@@ -582,7 +574,6 @@ for el in d:
     print(el,end=' ') # print elements
 
 # Piling Up!
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 from collections import deque
 T = int(input())  # number of test cases
 for _ in range(T):
@@ -624,12 +615,11 @@ if __name__ == '__main__':
         print(sorted_counter[i][0],sorted_counter[i][1])
 
 # Calendar Module
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 import calendar
-date = list(map(int,input().split()))
+date = list(map(int,input().split())) # read date in format MM DD YYYY
 weekdays = {0:'MONDAY',1:'TUESDAY',2:'WEDNESDAY',3:'THURSDAY',4:'FRIDAY',5:'SATURDAY',6:'SUNDAY'}
-day = calendar.weekday(date[2],date[0],date[1])
-print(weekdays[day])
+day = calendar.weekday(date[2],date[0],date[1]) # rearrange input to find the number of the weekday associated with YYYY MM DD
+print(weekdays[day]) # print the weekday corresponding to 'day'
 
 # Time Delta
 #!/bin/python3
@@ -661,7 +651,6 @@ if __name__ == '__main__':
     fptr.close()
 
 # Exceptions
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 T = int(input()) # number of test cases
 
 for _ in range(T):
@@ -686,8 +675,11 @@ for _ in range(T):
 
 # Incorrect Regex
 import re
+
 T = int(input())
+
 for _ in range(T):
+    # check if input() is a valid regex
     try:
         m = re.compile(input())
         print(True)
@@ -697,18 +689,17 @@ for _ in range(T):
 # Zipped!
 N, X = list(map(int,input().split()))
 
-students = []
+students = [] # initialize list of grades
 
 for _ in range(X): # add subject grades
-    students += [list(map(float,input().split()))]
-# create list of tuples with student grades
+    students += [list(map(float,input().split()))] # float grades of a certain subject
+# create list of tuples with grades grouped by student
 students = list(zip(*students))
 
 for i in range(N):
     print(sum(students[i])/X) # avg grade of student i
 
 # Input()
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 x, k = list(map(int,input().split()))
 polynomial = input()
 result = eval(polynomial) # evaluate polynomial expression
@@ -716,6 +707,7 @@ print(result==k) # check if P(x)=k
 
 # Athlete Sort
 #!/bin/python3
+
 import math
 import os
 import random
@@ -724,15 +716,19 @@ import sys
 
 if __name__ == '__main__':
     first_multiple_input = input().rstrip().split()
-    n = int(first_multiple_input[0])
-    m = int(first_multiple_input[1])
-    arr = []
+
+    n = int(first_multiple_input[0]) # number of athletes
+    m = int(first_multiple_input[1]) # number of attributes
+    arr = [] # initialize array of attributes
+    
+    # Read input values
     for _ in range(n):
         arr.append(list(map(int, input().rstrip().split())))
-    k = int(input().strip())
+
+    k = int(input().strip()) # attribute k
+    arr.sort(key = lambda x: x[k]) # sort athletes based on their age
     
-    arr.sort(key = lambda x: x[k])
-    
+    # print the n lines of the sorted table
     for i in range(len(arr)):
         for j in range(len(arr[i])):
             print(arr[i][j],end=' ')
@@ -740,10 +736,14 @@ if __name__ == '__main__':
 
 # ginortS
 s = input()
+
+# initialize strings with upper, lower, odd, even chars contained in s
 s_upper = ''
 s_lower = ''
 s_odd = ''
 s_even = ''
+
+# divide s into four strings, with upper, lower, even and odd characters
 for i in range(len(s)):
     if s[i].isupper():
         s_upper = s_upper + s[i]
@@ -753,27 +753,36 @@ for i in range(len(s)):
         s_even = s_even + s[i]
     elif int(s[i])%2==1:
         s_odd = s_odd + s[i]
+        
+# sort all pieces separately, then join them
 print(''.join(sorted(s_lower)+sorted(s_upper)+sorted(s_odd)+sorted(s_even)))
 
 # Map and Lambda Function
 cube = lambda x: x**3
+
 def fibonacci(n):
+    # if the fibonacci is 0, 1 or 2, return a pre-defined list
     if n == 0:
         return []
     if n == 1:
         return [0]
     if n == 2:
         return [0,1]
-    fib = []
-    f1, f2 = 0, 1
-    fib.extend([0,1])
+        
+    # if the fibonacci is larger than 2
+    fib = [] # initialize a list for the fibonacci numbers
+    f1, f2 = 0, 1 # first two fibonacci numbers
+    fib.extend([0,1]) # add them to the list
     for _ in range(2,n):
-        fib.append(f1+f2)
-        f1, f2 = f2, f1+f2
-    return fib
+        fib.append(f1+f2) # add new fibonacci number to the list
+        f1, f2 = f2, f1+f2 # update f1, f2
+    return fib # return the list
 
 # Validating Email Addresses With a Filter
 def fun(s):
+    # return True if s is a valid email, else return False
+    
+    # check if the email has the right structure
     try:
         split_email = s.split('@')
         username = split_email[0]
@@ -781,57 +790,81 @@ def fun(s):
         extension = split_email[1].split('.')[1]    
     except IndexError:
         return False
+        
+    # check if the username only contains letters, digits, dashes or underscores
     username_requisite = False
     if username.replace('-','').replace('_','').isalnum():
         username_requisite = True
+    
+    # check if the website only has letters and digits
     website_requisite = False
     if website.isalnum():
         website_requisite = True
+    
+    # check if the extension only contains letters as is 3 characters long
     extension_requisite = False
     if extension.isalpha() and 0<len(extension)<4:
         extension_requisite = True
+    
+    # if all the requisites are satisfied, return True
     if username_requisite and website_requisite and extension_requisite:
         return True
     else:
-        return False
+        return False # otherwise False
    
 
 # Detect Floating Point Number
 T = int(input())
+
 for _ in range(T):
-    N = input()
+    N = input() # read input number
+    
+    # check the beginning if the number starts with +,-,. or a digit
     if (N[0] not in '+-.') and (not N[0].isdigit()):
         print(False)
         continue
+        
+    # check if there's only one '.' dot
+    # check if there is at least one decimal value
+    # check if the part following the '.' dot consits only of numbers
     if len(N.split('.'))!=2 or not N.split('.')[1] or not N.split('.')[1].isdigit():
         print(False)
         continue
+    
+    # verify that there is at most one '+' or '-' symbol, and if there is one, verify that it is at index 0
     if (N.count('+')+N.count('-'))>1 or (N.count('+')==1 and N.index('+')!=0) or (N.count('-')==1 and N.index('-')!=0):
         print(False)
         continue
+    
+    # try to convert the number without sign symbol to a float
     try:
         float(N.replace('+','').replace('-',''))
     except TypeError:
         print(False)
         continue
+    
+    # if the number passed all the tests, it's a float
     print(True)
 
+
 # Re.split()
-regex_pattern = r"[,.]"    # Do not delete 'r'.
+regex_pattern = r"[,.]"
 
 # Group(), Groups() & Groupdict()
 import re
 S = input()
-m = re.search(r'([A-Za-z0-9])\1+',S)
+m = re.search(r'([A-Za-z0-9]{1})\1+',S) # see if there's a repeating character
 try:
-    print(m.group(1))
+    print(m.group(1)) # if possible, print the first occurrence of the repeating character
 except Exception:
     print(-1)
 
 # Re.findall() & Re.finditer()
 import re
 S = input()
+# search for substrings of S that contain 2 or more vowels and are surrounded by consonants
 m = re.findall(r'(?<=[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm])[AEIOUaeiou]{2,}(?=[QWRTYPSDFGHJKLZXCVBNMqwrtypsdfghjklzxcvbnm])',S)
+# print all the matches, otherwise print -1
 if m:
     for match in m:
         print(match)
@@ -842,14 +875,18 @@ else:
 import re
 S = input()
 k = input()
-idx = 0
-matches = set()
+
+idx = 0 # initialize moving index
+matches = set() # initialize set of matches
+
+# while the index is smaller than the length difference between S and k
 while idx<len(S)-len(k):
-    m = re.search(k,S[idx:])
-    if m:
+    m = re.search(k,S[idx:]) # see if k is in S[idx:]
+    if m: # if yes, add starting and ending positions of the match to 'matches'
         matches.add((m.start()+idx,m.end()+idx-1))
-    idx += 1
+    idx += 1 # update idx
     
+# print all the match start and end indeces
 if matches:
     for match in matches:
         print(match)
@@ -860,14 +897,20 @@ else:
 import re
 N = int(input())
 text = ''
+
+# read input lines
 for i in range(N):
     if i==0:
         text = input()
     else:
         text = text + '\n' + input()
-    
+
+# replace '&&' with 'and' if there are spaces on both sides
 m = re.sub(r'(?<=\s{1})([&]{2})(?=\s{1})','and',text)
+
+# replace '||' with 'or' if there are spaces on both sides
 n = re.sub(r'(?<=\s{1})([|]{2})(?=\s{1})','or',m)
+
 print(n)
 
 # Validating Roman Numerals
@@ -888,28 +931,41 @@ for _ in range(N):
 import re
 
 n = int(input())
+
 for _ in range(n):
     line = input()
+    
+    # see if the name, email pair matches the criteria
     m = re.match(r'([A-Za-z]+) <([A-Za-z]{1})([A-Za-z0-9_.-]*)@([A-Za-z]+)[.]([A-Za-z]{1,3})>$',line)
+    
+    # if yes, print the name, email pair
     if m:
         print(line)
 
 # Hex Color Code
 import re
+
 N = int(input())
 text = ''
+
+# read input lines of CSS code
 for i in range(N):
     if i==0:
         text = input()
     else:
         text = text + '\n' + input()
         
+# search for non-overlapping color code matches
 m = re.findall(r'(#[A-Fa-f0-9]{3,6})(?!\s*[{])', text)
+
+# print all the matches
 for match in m:
     print(match)
 
 # HTML Parser - Part 1
 from html.parser import HTMLParser
+
+# create costumized HTMLParser class
 class NewHTMLParser(HTMLParser):
     def handle_starttag(self,tag,attrs):
         print(f'Start : {tag}')
@@ -921,19 +977,25 @@ class NewHTMLParser(HTMLParser):
         print(f'Empty : {tag}')
         for name, value in attrs:
             print(f'-> {name} > {value}')
+
 N = int(input())
 html_code = ''
+
+# read input
 for i in range(N):
     if i==0:
         html_code = input()
     else:
         html_code = html_code + input()
+
+# create a parser and feed the html code to it
 parser = NewHTMLParser()
 parser.feed(html_code)
 
 # HTML Parser - Part 2
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 from html.parser import HTMLParser
+
+#create customized HTMLParser class
 class NewHTMLParser(HTMLParser):
     def handle_comment(self,comment):
         if len(comment.split('\n'))==1:
@@ -947,47 +1009,62 @@ class NewHTMLParser(HTMLParser):
         if data!='\n':
             print('>>> Data')
             print(data)
+
 N = int(input())
 html_code = ''
+
+# read input
 for _ in range(N):
     html_code += ('\n' + input())
+
+# parse the html code
 parser = NewHTMLParser()
 parser.feed(html_code)
     
-
 # Detect HTML Tags, Attributes and Attribute Values
 from html.parser import HTMLParser
+
+# create costumized HTMLParser class
 class NewHTMLParser(HTMLParser):
     def handle_starttag(self,tag,attrs):
         print(tag)
         if attrs:
             for name, value in attrs:
                 print(f'-> {name} > {value}')
+
 N  = int(input())
 html_code = ''
+
+# read input 
 for i in range(N):
     if i==0:
         html_code = input()
     else:
         html_code += ('\n' + input())
+
+# parse the html code
 parser = NewHTMLParser()
 parser.feed(html_code)
 
 # Validating UID
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 import re
 from collections import Counter
+
 T = int(input())
+
 for _ in range(T):
-    UID = input()
+    UID = input() # read UID
     
+    # if there's a repeating value
     if max(Counter(UID).values())>1:
-        print('Invalid')
+        print('Invalid') # the UID is invalid
         continue
-    m = re.findall(r"[A-Z]",UID)
-    n = re.findall(r"[0-9]",UID)
-    p = re.findall(r"^[A-Za-z0-9]{10}$",UID)
+
+    m = re.findall(r"[A-Z]",UID) # regex that looks for capital letters in UID
+    n = re.findall(r"[0-9]",UID) # regex that looks for digits in UID 
+    p = re.findall(r"^[A-Za-z0-9]{10}$",UID) # regex verifying the length and allowed characters in UID
     
+    # check if all the requisites are satisfied
     if len(m)<2 or len(n)<3 or not p:
         print('Invalid')
     else:
@@ -1000,11 +1077,12 @@ N = int(input())
 for _ in range(N):
     
     credit_card = input()
-    m = re.findall(r"^[4-6]{1}",credit_card)
-    n = re.findall(r"^[0-9]{16}$",credit_card)
-    p = re.findall(r"^([0-9]{4})(\-[0-9]{4})(\-[0-9]{4})(\-[0-9]{4})$",credit_card)
-    q = re.findall(r"([0-9])\1{3}|([0-9])\-\2\2|([0-9])\3\-\3",credit_card)
+    m = re.findall(r"^[4-6]{1}",credit_card) # see if the number starts with 4, 5 or 6
+    n = re.findall(r"^[0-9]{16}$",credit_card) # regex that checks if the number consists of 16 digits
+    p = re.findall(r"^([0-9]{4})(\-[0-9]{4})(\-[0-9]{4})(\-[0-9]{4})$",credit_card) # regex that checks if the digits are in groups of 4
+    q = re.findall(r"([0-9])\1{3}|([0-9])\-\2\2|([0-9])\3\-\3",credit_card) # checks if there are 4 or more consecutive digits
     
+    # check if all requisites are satisfied
     if m and (n or p) and (not q):
         print('Valid')
     else:
@@ -1016,6 +1094,7 @@ regex_alternating_repetitive_digit_pair = r"(?=([0-9]{1})[0-9]{1}\1)"
 
 # Matrix Script
 #!/bin/python3
+
 import math
 import os
 import random
@@ -1023,52 +1102,70 @@ import re
 import sys
 
 first_multiple_input = input().rstrip().split()
+
 n = int(first_multiple_input[0])
 m = int(first_multiple_input[1])
+
 matrix = []
+
 for _ in range(n):
     matrix_item = input()
     matrix.append(matrix_item)
-chars_in_order = ''.join([matrix[i][j] for j in range(m) for i in range(n)])
-m = re.sub(r'(?<=[A-Za-z0-9])[\s!@#$%&]+(?=[A-Za-z0-9])',' ',chars_in_order)
-print(m)
 
+# put all characters in order, going top to bottom, from left to right
+chars_in_order = ''.join([matrix[i][j] for j in range(m) for i in range(n)])
+
+# replace whitespaces and ! @ # $ % & symbols with a single space
+m = re.sub(r'(?<=[A-Za-z0-9])[\s!@#$%&]+(?=[A-Za-z0-9])',' ',chars_in_order)
+
+print(m)
 
 # XML 1 - Find the Score
 def get_attr_number(node):
-    score = 0
+    score = 0 # initialize the score
     for child in node.iter():
+        # add the number of attributes of the element 'child' to the score
         score += len([attr for attr in child.attrib])
     return score
 
 # XML2 - Find the Maximum Depth
+import xml.etree.ElementTree as etree
 maxdepth = 0
 def depth(elem, level):
     global maxdepth
-    if not elem:
-        pass
-    level += 1
+    if not elem: # if elem doesn't have children
+        pass # pass
+    
+    level += 1 # update level to elem's depth
+    
+    # if level is larger than maxdepth, it means that the maximum depth is larger than perviously thought
     if level>maxdepth:
-        maxdepth = level
+        maxdepth = level # update maxdepth
+    
+    # apply the depth function recursively to all children of elem
     for child in elem:
         depth(child, level)
-
 
 # Standardize Mobile Number Using Decorators
 def wrapper(f):
     def fun(l):
-        formatted_nums = []
+        formatted_nums = [] # initialize list of formatted numbers
         for number in l:
             num = number[-10:] # actual number
+            # format the phone number
             formatted_nums.append("+91 {0} {1}".format(num[:5],num[5:]))
-        return f(formatted_nums)
+        return f(formatted_nums) # return f applied to the formatted numbers
     return fun
 
 # Decorators 2 - Name Directory
+import operator
 def person_lister(f):
     def inner(people):
+        # list of people with their associated index
         people_with_indices = [(person, idx) for idx, person in enumerate(people)]
+        # sort this list by age and input order
         people_with_indices.sort(key=lambda x: (int(x[0][2]),x[1]))
+        # apply the function f to every person
         new = [f(person) for person, idx in people_with_indices]
         return new
     return inner
@@ -1235,14 +1332,8 @@ import os
 import random
 import re
 import sys
-#
-# Complete the 'birthdayCakeCandles' function below.
-#
-# The function is expected to return an INTEGER.
-# The function accepts INTEGER_ARRAY candles as parameter.
-#
+
 def birthdayCakeCandles(candles):
-    # Write your code here
     return candles.count(max(candles))
     
 if __name__ == '__main__':
@@ -1260,28 +1351,20 @@ import os
 import random
 import re
 import sys
-#
-# Complete the 'kangaroo' function below.
-#
-# The function is expected to return a STRING.
-# The function accepts following parameters:
-#  1. INTEGER x1
-#  2. INTEGER v1
-#  3. INTEGER x2
-#  4. INTEGER v2
-#
+
 def kangaroo(x1, v1, x2, v2):
-    # Write your code here
-    if v1==v2:
-        if x1==x2:
-            return 'YES'
-        else:
-            return 'NO'
-    d = (x2-x1)/(v1-v2)
-    if d.is_integer() and d>0:
-        return 'YES'
+    if v1==v2: # if jump distances are equal
+        if x1==x2: # and starting positions are equal
+            return 'YES' # they always meet
+        else: # if starting positions aren't equal
+            return 'NO' # they'll never meet
+    # ratio between start positions difference and jump distance differences 
+    d = (x2-x1)/(v1-v2) 
+    if d.is_integer() and d>0: # if this is a positive integer
+        return 'YES' # they are going to meet because the equation above is satisfied for d jumps
     else:
-        return 'NO'
+        return 'NO' # otherwise they won't meet
+        
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
     first_multiple_input = input().rstrip().split()
