@@ -177,6 +177,7 @@ if __name__ == '__main__':
             arr.pop()
         if str(command[0]) == 'reverse':
             arr.reverse()
+            
 ###############################################
 
 # Tuples
@@ -645,7 +646,7 @@ print(is_superset)
 
 ###############################################
 
-
+########## Collections ###########
 
 # collections.Counter()
 from collections import Counter
@@ -797,6 +798,8 @@ if __name__ == '__main__':
 
 ###############################################
 
+################ Date and Time #################
+
 # Calendar Module
 import calendar
 date = list(map(int,input().split())) # read date in format MM DD YYYY
@@ -814,6 +817,7 @@ import random
 import re
 import sys
 from datetime import datetime, timezone
+
 def time_delta(t1, t2):
     # format datetimes using python docs formats
     time1 = datetime.strptime(t1, '%a %d %b %Y %H:%M:%S %z')
@@ -825,6 +829,7 @@ def time_delta(t1, t2):
     time_delta = utc1 - utc2
     # Use timedelta.total_seconds
     return str(abs(int(time_delta.total_seconds())))
+    
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
     t = int(input())
@@ -836,6 +841,8 @@ if __name__ == '__main__':
     fptr.close()
 
 ###############################################
+
+################ Errors and Exceptions #################
 
 # Exceptions
 T = int(input()) # number of test cases
@@ -876,6 +883,8 @@ for _ in range(T):
         print(False)
 
 ###############################################
+
+################ Built-Ins #################
 
 # Zipped!
 N, X = list(map(int,input().split()))
@@ -956,6 +965,8 @@ print(''.join(sorted(s_lower)+sorted(s_upper)+sorted(s_odd)+sorted(s_even)))
 
 ###############################################
 
+################ Python Functionals #################
+
 # Map and Lambda Function
 cube = lambda x: x**3
 
@@ -976,6 +987,12 @@ def fibonacci(n):
         fib.append(f1+f2) # add new fibonacci number to the list
         f1, f2 = f2, f1+f2 # update f1, f2
     return fib # return the list
+
+if __name__ == '__main__':
+    n = int(input())
+    print(list(map(cube, fibonacci(n))))
+
+###############################################
 
 # Validating Email Addresses With a Filter
 def fun(s):
@@ -1010,7 +1027,23 @@ def fun(s):
         return True
     else:
         return False # otherwise False
-   
+
+def filter_mail(emails):
+    return list(filter(fun, emails))
+
+if __name__ == '__main__':
+    n = int(input())
+    emails = []
+    for _ in range(n):
+        emails.append(input())
+
+filtered_emails = filter_mail(emails)
+filtered_emails.sort()
+print(filtered_emails)
+
+############################################### 
+
+################ Regex and Parsing #################
 
 # Detect Floating Point Number
 T = int(input())
@@ -1045,9 +1078,15 @@ for _ in range(T):
     # if the number passed all the tests, it's a float
     print(True)
 
+###############################################
 
 # Re.split()
 regex_pattern = r"[,.]"
+
+import re
+print("\n".join(re.split(regex_pattern, input())))
+
+###############################################
 
 # Group(), Groups() & Groupdict()
 import re
@@ -1057,6 +1096,8 @@ try:
     print(m.group(1)) # if possible, print the first occurrence of the repeating character
 except Exception:
     print(-1)
+
+###############################################
 
 # Re.findall() & Re.finditer()
 import re
@@ -1069,6 +1110,8 @@ if m:
         print(match)
 else:
     print(-1)
+
+###############################################
 
 # Re.start() & Re.end()
 import re
@@ -1092,6 +1135,8 @@ if matches:
 else:
     print((-1,-1))
 
+###############################################
+
 # Regex Substitution
 import re
 N = int(input())
@@ -1112,8 +1157,15 @@ n = re.sub(r'(?<=\s{1})([|]{2})(?=\s{1})','or',m)
 
 print(n)
 
+###############################################
+
 # Validating Roman Numerals
 regex_pattern = r"^(M){0,3}(C{1,3}|CD|D|DC{1,3}|CM){0,1}(X{1,3}|XL|L|LX{1,3}|XC){0,1}(I{1,3}|IV|V|VI{1,3}|IX){0,1}$"	# Do not delete 'r'.
+
+import re
+print(str(bool(re.match(regex_pattern, input()))))
+
+###############################################
 
 # Validating phone numbers
 import re
@@ -1125,6 +1177,8 @@ for _ in range(N):
         print('YES')
     else:
         print('NO')
+
+###############################################
 
 # Validating and Parsing Email Addresses
 import re
@@ -1140,6 +1194,8 @@ for _ in range(n):
     # if yes, print the name, email pair
     if m:
         print(line)
+
+###############################################
 
 # Hex Color Code
 import re
@@ -1160,6 +1216,8 @@ m = re.findall(r'(#[A-Fa-f0-9]{3,6})(?!\s*[{])', text)
 # print all the matches
 for match in m:
     print(match)
+
+###############################################
 
 # HTML Parser - Part 1
 from html.parser import HTMLParser
@@ -1191,6 +1249,8 @@ for i in range(N):
 parser = NewHTMLParser()
 parser.feed(html_code)
 
+###############################################
+
 # HTML Parser - Part 2
 from html.parser import HTMLParser
 
@@ -1219,7 +1279,9 @@ for _ in range(N):
 # parse the html code
 parser = NewHTMLParser()
 parser.feed(html_code)
-    
+
+###############################################
+
 # Detect HTML Tags, Attributes and Attribute Values
 from html.parser import HTMLParser
 
@@ -1245,6 +1307,8 @@ for i in range(N):
 parser = NewHTMLParser()
 parser.feed(html_code)
 
+###############################################
+
 # Validating UID
 import re
 from collections import Counter
@@ -1268,7 +1332,8 @@ for _ in range(T):
         print('Invalid')
     else:
         print('Valid')
-        
+
+###############################################
         
 # Validating Credit Card Numbers
 import re
@@ -1287,9 +1352,19 @@ for _ in range(N):
     else:
         print('Invalid')
 
+###############################################
+
 # Validating Postal Codes
 regex_integer_in_range = r"^[1-9]{1}[0-9]{5}$"
 regex_alternating_repetitive_digit_pair = r"(?=([0-9]{1})[0-9]{1}\1)"
+
+import re
+P = input()
+
+print (bool(re.match(regex_integer_in_range, P)) 
+and len(re.findall(regex_alternating_repetitive_digit_pair, P)) < 2)
+
+###############################################
 
 # Matrix Script
 #!/bin/python3
@@ -1319,6 +1394,10 @@ m = re.sub(r'(?<=[A-Za-z0-9])[\s!@#$%&]+(?=[A-Za-z0-9])',' ',chars_in_order)
 
 print(m)
 
+###############################################
+
+#################### XML ######################
+
 # XML 1 - Find the Score
 def get_attr_number(node):
     score = 0 # initialize the score
@@ -1326,6 +1405,15 @@ def get_attr_number(node):
         # add the number of attributes of the element 'child' to the score
         score += len([attr for attr in child.attrib])
     return score
+
+if __name__ == '__main__':
+    sys.stdin.readline()
+    xml = sys.stdin.read()
+    tree = etree.ElementTree(etree.fromstring(xml))
+    root = tree.getroot()
+    print(get_attr_number(root))
+
+###############################################
 
 # XML2 - Find the Maximum Depth
 import xml.etree.ElementTree as etree
@@ -1345,6 +1433,19 @@ def depth(elem, level):
     for child in elem:
         depth(child, level)
 
+if __name__ == '__main__':
+    n = int(input())
+    xml = ""
+    for i in range(n):
+        xml =  xml + input() + "\n"
+    tree = etree.ElementTree(etree.fromstring(xml))
+    depth(tree.getroot(), -1)
+    print(maxdepth)
+
+###############################################
+
+########### Closures and Decorators ###########
+
 # Standardize Mobile Number Using Decorators
 def wrapper(f):
     def fun(l):
@@ -1355,6 +1456,16 @@ def wrapper(f):
             formatted_nums.append("+91 {0} {1}".format(num[:5],num[5:]))
         return f(formatted_nums) # return f applied to the formatted numbers
     return fun
+
+@wrapper
+def sort_phone(l):
+    print(*sorted(l), sep='\n')
+
+if __name__ == '__main__':
+    l = [input() for _ in range(int(input()))]
+    sort_phone(l) 
+
+###############################################
 
 # Decorators 2 - Name Directory
 import operator
@@ -1369,6 +1480,16 @@ def person_lister(f):
         return new
     return inner
 
+@person_lister
+def name_format(person):
+    return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+
+if __name__ == '__main__':
+    people = [input().split() for i in range(int(input()))]
+    print(*name_format(people), sep='\n')
+
+###############################################
+
 # Arrays
 import numpy
 def arrays(arr):
@@ -1381,11 +1502,19 @@ def arrays(arr):
     # convert the array to numpy and print it
     return numpy.array(arr,float)
 
+arr = input().strip().split(' ')
+result = arrays(arr)
+print(result)
+
+###############################################
+
 # Shape and Reshape
 import numpy
 # read the numbers and turn them into a numpy array
 arr = numpy.array(input().strip().split(' '),int)
 print(arr.reshape(3,3)) # print the array
+
+###############################################
 
 # Transpose and Flatten
 import numpy
@@ -1397,6 +1526,8 @@ for _ in range(N):
 np_array = numpy.array(lines)
 print(np_array.transpose(1,0)) # print the transposed the array
 print(np_array.flatten()) # print flattened array
+
+###############################################
 
 # Concatenate
 import numpy
@@ -1414,17 +1545,23 @@ array1 = numpy.array(rows1) # first numpy array
 array2 = numpy.array(rows2) # second numpy array
 print(numpy.concatenate((array1,array2),axis=0)) # concatenate arrays
 
+###############################################
+
 # Zeros and Ones
 import numpy
 dimensions = tuple(map(int,input().split())) # read dimensions
 print(numpy.zeros(dimensions,dtype=int)) # print array of zeros
 print(numpy.ones(dimensions,dtype=int)) # print array of ones
 
+###############################################
+
 # Eye and Identity
 import numpy
 numpy.set_printoptions(legacy='1.13') # get the alignment correct
 N,M = list(map(int,input().split())) # read dimensions
 print(numpy.eye(N,M)) # print identity matrix
+
+###############################################
 
 # Array Mathematics
 import numpy
@@ -1444,6 +1581,8 @@ print(numpy.floor_divide(A,B))
 print(numpy.mod(A,B))
 print(numpy.power(A,B))
 
+###############################################
+
 # Floor, Ceil and Rint
 import numpy
 numpy.set_printoptions(legacy='1.13') # set coorect output format
@@ -1451,6 +1590,8 @@ A = numpy.array(list(map(float,input().split()))) # read input array A
 print(numpy.floor(A))
 print(numpy.ceil(A))
 print(numpy.rint(A))
+
+###############################################
 
 # Sum and Prod
 import numpy
@@ -1461,6 +1602,8 @@ for _ in range(N):
 arr = numpy.array(rows) # turn rows into a numpy array
 print(numpy.prod(numpy.sum(arr,axis=0))) # print product of the column sums
 
+###############################################
+
 # Min and Max
 import numpy
 N, M = list(map(int,input().split())) # read dimensions
@@ -1470,6 +1613,8 @@ for _ in range(N):
     rows.append(list(map(int,input().split())))
 arr = numpy.array(rows) # turn rows into a numpy array
 print(numpy.max(numpy.min(arr,axis=1))) # print the max among the column mins
+
+###############################################
 
 # Mean, Var, and Std
 import numpy
@@ -1484,6 +1629,8 @@ print(numpy.mean(arr, axis=1))
 print(numpy.var(arr, axis=0))
 print(round(numpy.std(arr,axis=None),11)) # round to 11 decimal places
 
+###############################################
+
 # Dot and Cross
 import numpy
 # read input
@@ -1497,6 +1644,8 @@ A = numpy.array(rowsA) # numpy array A
 B = numpy.array(rowsB) # numpy array B
 print(A @ B) # print matrix product
 
+###############################################
+
 # Inner and Outer
 import numpy
 # read input arrays
@@ -1506,11 +1655,15 @@ B = numpy.array(input().split(),int)
 print(numpy.inner(A,B))
 print(numpy.outer(A,B))
 
+###############################################
+
 # Polynomials
 import numpy
 P = numpy.array(input().split(),float) # read input array of coefficients
 x = float(input()) # read x
 print(numpy.polyval(P,x)) # print value of polynomial P at point x
+
+###############################################
 
 # Linear Algebra
 import numpy
@@ -1523,6 +1676,11 @@ for _ in range(N):
 A = numpy.array(rows) # numpy array A
 print(round(numpy.linalg.det(A),2)) # print determinant of A
 
+###############################################
+
+################### Problem 2 #################
+
+###############################################
 
 # Birthday Cake Candles
 #!/bin/python3
@@ -1542,6 +1700,8 @@ if __name__ == '__main__':
     result = birthdayCakeCandles(candles)
     fptr.write(str(result) + '\n')
     fptr.close()
+
+###############################################
 
 # Number Line Jumps
 #!/bin/python3
@@ -1574,6 +1734,8 @@ if __name__ == '__main__':
     result = kangaroo(x1, v1, x2, v2)
     fptr.write(result + '\n')
     fptr.close()
+
+###############################################
 
 # Viral Advertising
 #!/bin/python3
@@ -1609,6 +1771,8 @@ if __name__ == '__main__':
     result = viralAdvertising(n)
     fptr.write(str(result) + '\n')
     fptr.close()
+
+###############################################
 
 # Recursive Digit Sum
 #!/bin/python3
@@ -1661,6 +1825,8 @@ if __name__ == '__main__':
     fptr.write(str(result) + '\n')
     fptr.close()
 
+###############################################
+
 # Insertion Sort - Part 1
 #!/bin/python3
 import math
@@ -1696,6 +1862,8 @@ if __name__ == '__main__':
     n = int(input().strip())
     arr = list(map(int, input().rstrip().split()))
     insertionSort1(n, arr)
+
+###############################################
 
 # Insertion Sort - Part 2
 #!/bin/python3
