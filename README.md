@@ -4,7 +4,7 @@ This repository contains the scripts for the Python HackerRank challenges assign
 
 ## Additional information
 
-The datasets used to test the solutions are those provided directly by HackerRank for each challenge. If you want to test a specific solution, it is recommended to copy and paste the relevant script extract into the HackerRank editor for the respective challenge.
+The datasets used to test the solutions are those provided directly by HackerRank for each challenge.
 
 ## Script descriptions
 
