@@ -1,5 +1,13 @@
+########## Problem 1 ##########
+
+########## Introduction ###########
+
+##############################################
+
 # Say "Hello, World!" With Python
 print("Hello, World!")
+
+###############################################
 
 # Python If-Else
 #!/bin/python3
@@ -21,6 +29,8 @@ if __name__ == '__main__':
         elif n>20: # if n is larger than 20
             print('Not Weird') # print 'Not Weird'
 
+###############################################
+
 # Arithmetic Operators
 if __name__ == '__main__':
     a = int(input())
@@ -29,6 +39,8 @@ if __name__ == '__main__':
     print(a-b)
     print(a*b)
 
+###############################################
+
 # Python: Division
 if __name__ == '__main__':
     a = int(input())
@@ -36,11 +48,15 @@ if __name__ == '__main__':
     print(a//b)
     print(a/b)
 
+###############################################
+
 # Loops
 if __name__ == '__main__':
     n = int(input())
     for i in range(n):
         print(i**2)
+
+###############################################
 
 # Write a function
 def is_leap(year):
@@ -55,11 +71,20 @@ def is_leap(year):
     
     return leap
 
+year = int(input())
+print(is_leap(year))
+
+###############################################
+
 # Print Function
 if __name__ == '__main__':
     n = int(input())
     for i in range(1,n+1):
         print(i,end="")
+
+###############################################
+
+########## Basic Data Types ###########
 
 # List Comprehensions
 if __name__ == '__main__':
@@ -69,6 +94,8 @@ if __name__ == '__main__':
     n = int(input())
     grid = [[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i+j+k!=n] # Create list of 3D coordinates (i,j,k) on a grid such that i+j+k != n
     print(grid)
+
+###############################################
 
 # Find the Runner-Up Score!
 if __name__ == '__main__':
@@ -80,6 +107,8 @@ if __name__ == '__main__':
         scores.remove(winner)
     runner_up = max(scores) # the next highest score is the runner up
     print(runner_up)
+
+###############################################
 
 # Nested Lists
 if __name__ == '__main__':
@@ -109,6 +138,8 @@ if __name__ == '__main__':
     for student in sorted(second_to_last_students):
         print(student)
 
+###############################################
+
 # Finding the percentage
 if __name__ == '__main__':
     n = int(input())
@@ -122,7 +153,8 @@ if __name__ == '__main__':
     avg_grades = sum(student_marks[query_name])/len(student_marks[query_name]) # avg grade of the query student
     formatted_avg = "{:.2f}".format(avg_grades) # format the avg to have 2 places after decimal
     print(formatted_avg)
-    
+
+###############################################
 
 # Lists
 if __name__ == '__main__':
@@ -145,7 +177,8 @@ if __name__ == '__main__':
             arr.pop()
         if str(command[0]) == 'reverse':
             arr.reverse()
-            
+###############################################
+
 # Tuples
 if __name__ == '__main__':
     n = int(input())
@@ -153,10 +186,21 @@ if __name__ == '__main__':
     t = tuple(integer_list) # turn integer list into a tuple
     print(hash(t)) # print the result of hash(t)
 
+###############################################
+
+########## Strings ###########
+
 # sWAP cASE
 def swap_case(s):
     s = s.swapcase()
     return s
+
+if __name__ == '__main__':
+    s = input()
+    result = swap_case(s)
+    print(result)
+
+###############################################
 
 # String Split and Join
 def split_and_join(line):
@@ -164,16 +208,38 @@ def split_and_join(line):
     line = line.split(' ') # Split the line on a " " space
     line = '-'.join(line) # Join the line using - hyphen
     return line
+    
+if __name__ == '__main__':
+    line = input()
+    result = split_and_join(line)
+    print(result)
+
+###############################################
 
 # What's Your Name?
 def print_full_name(first, last):
     s = 'Hello {0} {1}! You just delved into python.'.format(first,last)
     print(s)
 
+if __name__ == '__main__':
+    first_name = input()
+    last_name = input()
+    print_full_name(first_name, last_name)
+
+###############################################
+
 # Mutations
 def mutate_string(string, position, character):
     new_string = string[:position] + character + string[position+1:]
     return new_string
+
+if __name__ == '__main__':
+    s = input()
+    i, c = input().split()
+    s_new = mutate_string(s, int(i), c)
+    print(s_new)
+
+###############################################
 
 # Find a string
 def count_substring(string, sub_string):
@@ -184,6 +250,15 @@ def count_substring(string, sub_string):
         index = string.find(sub_string)+1 # modify the search index in order not to encounter the same occurrence twice
         string = string[index:] # reassign the string, only keeping the slice that contains potential other occurrences
     return occurrences
+
+if __name__ == '__main__':
+    string = input().strip()
+    sub_string = input().strip()
+    
+    count = count_substring(string, sub_string)
+    print(count)
+
+###############################################
 
 # String Validators
 if __name__ == '__main__':
@@ -205,6 +280,8 @@ if __name__ == '__main__':
     for el in specific_char_exists:
         print(el)
 
+###############################################
+
 # Text Alignment
 #Replace all ______ with rjust, ljust or center. 
 thickness = int(input()) #This must be an odd number
@@ -225,6 +302,8 @@ for i in range(thickness+1):
 for i in range(thickness):
     print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
 
+###############################################
+
 # Text Wrap
 import textwrap
 
@@ -232,6 +311,13 @@ def wrap(string, max_width):
     new_string = textwrap.wrap(string,max_width) # split into list of max width lines
     new_string = '\n'.join(new_string) # join the elements into one string
     return new_string
+
+if __name__ == '__main__':
+    string, max_width = input(), int(input())
+    result = wrap(string, max_width)
+    print(result)
+
+###############################################
 
 # Designer Door Mat
 N, M = map(int, input().split())
@@ -254,6 +340,8 @@ for n in range(K-1,0,-1):
 # last line
 print(('.|.').center(M,'-'))
 
+###############################################
+
 # String Formatting
 def print_formatted(number):
     # get length of the binary number for formatting purposes
@@ -265,6 +353,12 @@ def print_formatted(number):
         hexadecimal = str(hex(i)).upper()[2:] # remove the '0x' of hexadecimal numbers
         binary = str(bin(i))[2:] # remove the '0b' of binary numbers
         print('{0:{4}} {1:>{4}} {2:>{4}} {3:>{4}}'.format(i,octal,hexadecimal,binary,width))
+
+if __name__ == '__main__':
+    n = int(input())
+    print_formatted(n)
+    
+###############################################
 
 # Alphabet Rangoli
 import string
@@ -292,11 +386,37 @@ def print_rangoli(size):
     rangoli = upper_half + lower_half
     print(rangoli)
     
+if __name__ == '__main__':
+    n = int(input())
+    print_rangoli(n)
+    
+###############################################
 
 # Capitalize!
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
 def solve(s):
     capitalized = [word.capitalize() for word in s.split(' ')]
     return ' '.join(capitalized)
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = solve(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
+
+###############################################
 
 # The Minion Game
 def minion_game(string):
@@ -317,6 +437,12 @@ def minion_game(string):
     if stuart_points == kevin_points:
         print('Draw')
 
+if __name__ == '__main__':
+    s = input()
+    minion_game(s)
+
+###############################################
+
 # Merge the Tools!
 import textwrap
 def merge_the_tools(string, k):
@@ -331,10 +457,26 @@ def merge_the_tools(string, k):
                 
         print(''.join(end_string)) # print the final word
 
+if __name__ == '__main__':
+    string, k = input(), int(input())
+    merge_the_tools(string, k)
+
+###############################################
+
+########## Sets ###########
+
 # Introduction to Sets
 def average(array):
     plants = set(array) # turn array into set (no duplicates)
     return '{0:.3f}'.format(sum(plants)/len(plants))
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = average(arr)
+    print(result)
+
+###############################################
 
 # Symmetric Difference
 # Read Input
@@ -346,6 +488,8 @@ set2 = set(map(int,input().split()))
 symm_diff = set1.difference(set2).union(set2.difference(set1)) # Create symmetric diff set
 for el in sorted(list(symm_diff)):
     print(el)
+
+###############################################
 
 # No Idea!
 # Store the input
@@ -361,6 +505,8 @@ for i in array:
         happiness -= 1 # subtract 1 from happiness if i is in B
 print(happiness)
 
+###############################################
+
 # Set .add()
 N = int(input())
 distinct_stamps = set() # initialize the set of distinct country stamps
@@ -369,6 +515,9 @@ for _ in range(N):
     if country not in distinct_stamps:
         distinct_stamps.add(country) # add this country to the distinct stamps
 print(len(distinct_stamps))
+
+###############################################
+
 
 # Set .discard(), .remove() & .pop()
 
@@ -389,6 +538,8 @@ for _ in range(N):
             s.pop() # remove an element
 print(sum(s))
 
+###############################################
+
 # Set .union() Operation
 # Read input
 n = int(input())
@@ -397,6 +548,8 @@ b = int(input())
 french = set(map(int,input().split()))
 total = english.union(french) # students subscribed to French or English newspapers
 print(len(total))
+
+###############################################
 
 # Set .intersection() Operation
 # Read input
@@ -407,13 +560,16 @@ french = set(map(int,input().split()))
 both = french.intersection(english) # students subscribed to both newspapers
 print(len(both))
 
+###############################################
+
 # Set .difference() Operation
-# Enter your code here. Read input from STDIN. Print output to STDOUT
 n = int(input())
 english = set(map(int,input().split()))
 b = int(input())
 french = set(map(int,input().split()))
 print(len(english.difference(french))) # print set diff between english and french set
+
+###############################################
 
 # Set .symmetric_difference() Operation
 n = int(input())
@@ -421,6 +577,8 @@ english = set(map(int,input().split()))
 b = int(input())
 french = set(map(int,input().split()))
 print(len(english.symmetric_difference(french))) # print symm diff set length
+
+###############################################
 
 # Set Mutations
 # Read input
@@ -440,6 +598,8 @@ for _ in range(N):
         A.symmetric_difference_update(other) # update A performing symmetric difference on A and the other set
 print(sum(A)) # print sum of A's final elements
 
+###############################################
+
 # The Captain's Room
 K = int(input())
 room_list = map(int,input().split())
@@ -453,6 +613,8 @@ for i in room_list:
 captain = seen_once.difference(seen_twice) # remove from seen_once all the numbers that have been seen twice
 print(captain.pop()) # print the only element in the set captain
 
+###############################################
+
 # Check Subset
 T = int(input())
 for _ in range(T):
@@ -465,6 +627,8 @@ for _ in range(T):
         print(True)
     else:
         print(False)
+        
+###############################################
 
 # Check Strict Superset
 # Read input
@@ -478,6 +642,10 @@ for _ in range(N):
         break # iterations can stop if A is not a strict superset
         
 print(is_superset)
+
+###############################################
+
+
 
 # collections.Counter()
 from collections import Counter
@@ -494,6 +662,8 @@ for _ in range(N):
         if available_sizes[costumer[0]] == 0: # if this counter reached 0
             del available_sizes[costumer[0]] # remove this shoe size
 print(earned)
+
+###############################################
 
 # DefaultDict Tutorial
 from collections import defaultdict
@@ -514,6 +684,8 @@ for i in range(m):
     else: # otherwise print -1
         print(-1)
 
+###############################################
+
 # Collections.namedtuple()
 from collections import namedtuple
 N = int(input())
@@ -524,6 +696,8 @@ for _ in range(N):
     marks.append(int(new_student.MARKS)) # access the mark of this student, add to list
 avg_marks = sum(marks)/len(marks) # calculate avg grade
 print(avg_marks)
+
+###############################################
 
 # Collections.OrderedDict()
 from collections import OrderedDict
@@ -541,6 +715,8 @@ for i in range(N):
 for item in items_bought.items():
     print(item[0],item[1])
 
+###############################################
+
 # Word Order
 from collections import OrderedDict
 n = int(input()) # number of words
@@ -555,6 +731,7 @@ print(len(words)) # print the number of distinct words
 for word_count in words.values():
     print(word_count, end=' ') # print the number of occurrences of each word
    
+###############################################
 
 # Collections.deque()
 from collections import deque
@@ -572,6 +749,8 @@ for _ in range(N):
         d.appendleft(int(command[1])) # append an element to the left
 for el in d:
     print(el,end=' ') # print elements
+
+###############################################
 
 # Piling Up!
 from collections import deque
@@ -596,6 +775,8 @@ for _ in range(T):
     else:
         print('No')
 
+###############################################
+
 # Company Logo
 #!/bin/python3
 import math
@@ -614,12 +795,16 @@ if __name__ == '__main__':
     for i in range(3): # print the first three letters with their occurrence counters
         print(sorted_counter[i][0],sorted_counter[i][1])
 
+###############################################
+
 # Calendar Module
 import calendar
 date = list(map(int,input().split())) # read date in format MM DD YYYY
 weekdays = {0:'MONDAY',1:'TUESDAY',2:'WEDNESDAY',3:'THURSDAY',4:'FRIDAY',5:'SATURDAY',6:'SUNDAY'}
 day = calendar.weekday(date[2],date[0],date[1]) # rearrange input to find the number of the weekday associated with YYYY MM DD
 print(weekdays[day]) # print the weekday corresponding to 'day'
+
+###############################################
 
 # Time Delta
 #!/bin/python3
@@ -650,6 +835,8 @@ if __name__ == '__main__':
         fptr.write(delta + '\n')
     fptr.close()
 
+###############################################
+
 # Exceptions
 T = int(input()) # number of test cases
 
@@ -673,6 +860,8 @@ for _ in range(T):
     except ZeroDivisionError:
         print('Error Code: integer division or modulo by zero')
 
+###############################################
+
 # Incorrect Regex
 import re
 
@@ -685,6 +874,8 @@ for _ in range(T):
         print(True)
     except Exception:
         print(False)
+
+###############################################
 
 # Zipped!
 N, X = list(map(int,input().split()))
@@ -699,11 +890,15 @@ students = list(zip(*students))
 for i in range(N):
     print(sum(students[i])/X) # avg grade of student i
 
+###############################################
+
 # Input()
 x, k = list(map(int,input().split()))
 polynomial = input()
 result = eval(polynomial) # evaluate polynomial expression
 print(result==k) # check if P(x)=k
+
+###############################################
 
 # Athlete Sort
 #!/bin/python3
@@ -734,6 +929,8 @@ if __name__ == '__main__':
             print(arr[i][j],end=' ')
         print('')
 
+###############################################
+
 # ginortS
 s = input()
 
@@ -756,6 +953,8 @@ for i in range(len(s)):
         
 # sort all pieces separately, then join them
 print(''.join(sorted(s_lower)+sorted(s_upper)+sorted(s_odd)+sorted(s_even)))
+
+###############################################
 
 # Map and Lambda Function
 cube = lambda x: x**3
